@@ -42,7 +42,7 @@ treeToDiag (Node cut lt rt) = do
         then treeToDiag lt === treeToDiag rt
     else if cut == Vertical
         then treeToDiag lt ||| treeToDiag rt
-    else square side
+    else text "Error" <> square side
 
 
 main = mainWith $ treeToDiag binTree
