@@ -15,7 +15,3 @@ data Tree a = Leaf a | Node Cut (Tree a) (Tree a) deriving (Show, Read)
 type STree = Tree String 
 binTree :: STree
 binTree = Node Vertical (Node Horizontal (Leaf "f1") (Leaf "f2")) (Node Horizontal (Leaf "f3") (Leaf "f4"))
-
-treeToString :: Tree String -> String 
-treeToString (Leaf n) = "leaf - " ++ show n
-treeToString (Node cut lt rt) = "cut - " ++ show cut ++ " | " ++ treeToString lt ++ treeToString rt
