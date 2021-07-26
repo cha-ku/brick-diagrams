@@ -1,4 +1,4 @@
-# Revision history for diag
+# Revision history for brick-diagrams
 
 ## 0.1.0.0 -- YYYY-mm-dd
 
