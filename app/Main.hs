@@ -7,24 +7,6 @@ import Diagrams.TwoD.Shapes
 import Diagrams.TwoD.Text
 
 data Cut = Horizontal Double | Vertical  deriving (Eq, Show, Read)
-
---Binary Tree with Cut
---data Tree a = Leaf a | Node Cut (Tree a) (Tree a) deriving (Show, Read)
---type STree = Tree String 
---binTree :: STree
---binTree = Node Vertical (Node (Horizontal 0.5) (Leaf "f1") (Leaf "f2")) (Node Horizontal (Leaf "f3") (Leaf "f4"))
---
---treeToString :: STree -> String 
---treeToString (Leaf n) = "leaf - " ++ show n
---treeToString (Node cut lt rt) = "cut - " ++ show cut ++ " | " ++ treeToString lt ++ treeToString rt
---
-
---treeToDiag :: STree -> Diagram B
---treeToDiag (Leaf a) = text a <> square side
---treeToDiag (Node cut lt rt) =
---    case cut of Horizontal sf -> treeToDiag lt === treeToDiag rt
---                Vertical      -> treeToDiag lt ||| treeToDiag rt
-
 -- KD Tree
 -- get a ratio value alongside the Cut value 
 side = 5
@@ -43,7 +25,7 @@ kdtreeToDiag (KLeaf t xs ys) = text t <> square side
 kdtreeToDiag (KNode cut lt rt) =
     -- get user to supply the overlap ratio
     case cut of Horizontal sf -> kdtreeToDiag lt # scaleY (sf * side) === kdtreeToDiag rt # scaleY ((1-sf) * side)
-                Vertical      ->alignT (kdtreeToDiag lt # scaleX (0.5 * side))  ||| alignT (kdtreeToDiag rt # scaleX (0.5 * side))
+                Vertical      -> alignT (kdtreeToDiag lt # scaleX (0.5 * side))  ||| alignT (kdtreeToDiag rt # scaleX (0.5 * side))
 
 
 main = mainWith $ alignT $ kdtreeToDiag mytree
